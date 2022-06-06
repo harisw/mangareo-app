@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
