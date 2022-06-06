@@ -1,0 +1,11 @@
+package com.harisw.mangareo.authenticationservice.repository;
+
+import com.harisw.mangareo.authenticationservice.model.ERole;
+import com.harisw.mangareo.authenticationservice.model.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface RoleRepository extends JpaRepository<Role, Integer> {
+    Optional<Role> findByName(ERole name);
+}
