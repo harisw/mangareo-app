@@ -1,21 +1,23 @@
 server:
   port: 8080
-
-eureka:
-  instance:
-    hostname: localhost
 spring:
   application:
     name: api-gateway
-  cloud:
-    gateway:
-      routes:
-        - id: manga-service
-          uri: http://localhost:8081/
-          predicates:
-            - Path=/manga/**
-            - Path=/genre/**
-        - id: auth-service
-          uri: http://localhost:8082/
-          predicates:
-            - Path=/auth/**
+eureka:
+  instance:
+    hostname: localhost
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: manga-service
+#          uri: http://localhost:8081/
+#          predicates:
+#            - Path=/manga/**
+#            - Path=/genre/**
+#        - id: authentication-service
+#          uri: http://localhost:8082/
+#          predicates:
+#            - Path=/auth/**
