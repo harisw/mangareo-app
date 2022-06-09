@@ -16,6 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.harisw.mangareo.authenticationservice.security.jwt.AuthEntryPointJwt;
 import com.harisw.mangareo.authenticationservice.security.jwt.AuthTokenFilter;
 import com.harisw.mangareo.authenticationservice.security.services.UserDetailsServiceImpl;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
@@ -24,6 +26,7 @@ import com.harisw.mangareo.authenticationservice.security.services.UserDetailsSe
 //        jsr250Enabled = true,
         prePostEnabled = true
 )
+@EnableWebMvc
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsServiceImpl userDetailsService;

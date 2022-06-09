@@ -2,12 +2,14 @@ package com.harisw.mangareo.authenticationservice.controller;
 
 import com.harisw.mangareo.authenticationservice.dto.request.LoginRequest;
 import com.harisw.mangareo.authenticationservice.dto.request.SignupRequest;
+import com.harisw.mangareo.authenticationservice.dto.request.TokenRequest;
 import com.harisw.mangareo.authenticationservice.dto.response.JwtResponse;
 import com.harisw.mangareo.authenticationservice.dto.response.MessageResponse;
 import com.harisw.mangareo.authenticationservice.model.ERole;
 import com.harisw.mangareo.authenticationservice.model.Role;
 import com.harisw.mangareo.authenticationservice.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,7 +28,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -97,5 +99,10 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully"));
+    }
+
+    @PostMapping("/authenticate")
+    public Boolean authenticateToken(@Valid @RequestBody TokenRequest tokenRequest) {
+        return jwtUtils.validateJwtToken(tokenRequest.getJwtToken());
     }
 }
